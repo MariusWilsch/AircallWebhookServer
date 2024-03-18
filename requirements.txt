@@ -1,1 +1,7 @@
 flask
+gunicorn
+speechmatics-python
+requests
+google-cloud-storage
+uuid
+simplegmail
