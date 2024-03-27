@@ -1,14 +1,16 @@
 from mailersend import emails
 
 def send_mail(summary):
-    mailer = emails.NewEmail('mlsn.e058e942ede4d87f506a9854c37798e368b3827b238aa7bb87c627ec01b5ee8f')
+    mailer = emails.NewEmail(
+        "mlsn.c3bdff3fddfb65c58423c8b3a67af1c54505c3245f65725270f2ba0551acf301"
+    )
 
     # define an empty dict to populate with mail values
     mail_body = {}
 
     mail_from = {
         "name": "veloxforce",
-        "email": "dtunderman@veloxforce.com",
+        "email": "marius@connectveloxforce.info",
     }
 
     recipients = [

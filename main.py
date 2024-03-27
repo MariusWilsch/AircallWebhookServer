@@ -27,6 +27,7 @@ def home():
 
 transcription_in_progress = {}
 
+
 @app.route("/aircall/webhook", methods=["POST"])
 def handle_webhook():
     data = request.json
