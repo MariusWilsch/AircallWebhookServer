@@ -15,11 +15,19 @@ def transcribe_with_AAI(recording_url, id):
             content_safety=False,
         )
     )
-    try:
-        transcript = transcriber.transcribe(data=recording_url)
-    except TranscriptError as e:
-        print(f"An error occurred during transcription: {e}")
-        return None
+    max_attempts = 2
+    for attempt in range(max_attempts):
+        try:
+            transcript = transcriber.transcribe(data=recording_url)
+            break
+        except TranscriptError as e:
+            if (
+                attempt < max_attempts - 1
+            ):  # No need to print an error if it's the last attempt
+                print(f"An error occurred during transcription: {e}, retrying...")
+            else:
+                print(f"An error occurred during transcription: {e}")
+                return None
     utterances_whole = "\n".join(
         [f"{u.speaker}: {u.text}" for u in transcript.utterances]
     )
